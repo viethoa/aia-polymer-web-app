@@ -82,7 +82,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <div class="div-container">
       <ul class="ul-title-container">
         <li class="li-left"></li>
-        <li class="li-right"><paper-button>NEXT</paper-button></li>
+        <li class="li-right"><paper-button id="btn-next">NEXT</paper-button></li>
       </ul>
       <br/>
       <div class="div-content">
@@ -105,7 +105,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     Polymer({
 
-      is: 'my-view2'
+      is: 'my-view2',
+
+      listeners:{
+        'btn-next.tap': 'btnNextClicked'
+      },
+
+      btnNextClicked: function(el) {
+        location.href = '/view3';
+      }
 
     });
 
