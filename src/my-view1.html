@@ -9,8 +9,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/app-route/app-location.html">
+<link rel="import" href="../bower_components/app-route/app-route.html">
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/iron-localstorage/iron-localstorage.html">
 
 <dom-module id="my-view1">
 
@@ -27,7 +30,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         --app-p2-color: #596C80;
       }
 
-     footer {
+      footer {
         background-color: var(--footer-color);
         padding: 12px 24px;
         font-size: 0.6rem;
@@ -127,11 +130,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
     </style>
 
+    <app-location route="{{route}}"></app-location>
+    <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
+
     <!-- Container  -->
     <div class="div-container">
       <ul class="ul-title-container">
         <li class="li-left"><p><strong>What do you want in a <br/> critical illness plan ?</strong></p></li>
-        <li class="li-right"><paper-button>NEXT</paper-button></li>
+        <li class="li-right"><paper-button on-tap="_btnNextClicked">NEXT</paper-button></li>
       </ul>
       <br/>
       <ul class="ul-info-container">
@@ -148,16 +154,28 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <br/>
       <ul class="ul-option-container">
         <li class="li-md li-one">
-          <paper-button class="btn-yes"><iron-icon icon="check"></iron-icon>YES</paper-button>
-          <paper-button class="btn-no active"><iron-icon icon="check"></iron-icon>NO</paper-button>
+          <paper-button on-tap="_btnOption1YesClicked" class$="btn-yes {{option.option_1_yes}}">
+            <iron-icon icon="check"></iron-icon> YES
+          </paper-button>
+          <paper-button on-tap="_btnOption1NoClicked" class$="btn-no {{option.option_1_no}}">
+            <iron-icon icon="check"></iron-icon> NO
+          </paper-button>
         </li>
         <li class="li-md li-two">
-          <paper-button class="btn-yes"><iron-icon icon="check"></iron-icon>YES</paper-button>
-          <paper-button class="btn-no active"><iron-icon icon="check"></iron-icon>NO</paper-button>
+          <paper-button on-tap="_btnOption2YesClicked" class$="btn-yes {{option.option_2_yes}}">
+            <iron-icon icon="check"></iron-icon> YES
+          </paper-button>
+          <paper-button on-tap="_btnOption2NoClicked" class$="btn-no {{option.option_2_no}}">
+            <iron-icon icon="check"></iron-icon> NO
+          </paper-button>
         </li>
         <li class="li-md li-three">
-          <paper-button class="btn-yes"><iron-icon icon="check"></iron-icon>YES</paper-button>
-          <paper-button class="btn-no active"><iron-icon icon="check"></iron-icon>NO</paper-button>
+          <paper-button on-tap="_btnOption3YesClicked" class$="btn-yes {{option.option_3_yes}}">
+            <iron-icon icon="check"></iron-icon> YES
+          </paper-button>
+          <paper-button on-tap="_btnOption3NoClicked" class$="btn-no {{option.option_3_no}}">
+            <iron-icon icon="check"></iron-icon> NO
+          </paper-button>
         </li>
       </ul>
     </div>
@@ -169,16 +187,89 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       </p>
     </footer>
 
+    <iron-localstorage name="option" value="{{option}}"
+    on-iron-localstorage-load-empty="initializeStorage"></iron-localstorage>
+
   </template>
 
   <script>
 
     Polymer({
 
-      is: 'my-view1'
+      is: 'my-view1',
 
+      properties: {
+        option: {
+          type: Object,
+          reflectToAttribute: true
+        }
+      },
+
+      ready: function() {
+        this.option = {
+          option_1_yes: "active",
+          option_2_yes: "active",
+          option_3_yes: "active",
+          option_1_no: "",
+          option_2_no: "",
+          option_3_no: ""
+        }
+      },
+
+      _btnNextClicked: function(e) {
+        if (this.option.option_1_no && this.option.option_2_no && this.option.option_3_no) {
+          location.href = '/view2';
+        } else {
+          location.href = '/view3';
+        }
+      },
+
+      _btnOption1YesClicked: function(e) {
+        this.set('option.option_1_yes', "active"),
+        this.set('option.option_1_no', "")
+      },
+
+      _btnOption1NoClicked: function(e) {
+        this.set('option.option_1_yes', ""),
+        this.set('option.option_1_no', "active")
+      },
+
+      _btnOption2YesClicked: function(e) {
+        this.set('option.option_2_yes', "active"),
+        this.set('option.option_2_no', "")
+      },
+
+      _btnOption2NoClicked: function(e) {
+        this.set('option.option_2_yes', ""),
+        this.set('option.option_2_no', "active")
+      },
+
+      _btnOption3YesClicked: function(e) {
+        this.set('option.option_3_yes', "active"),
+        this.set('option.option_3_no', "")
+      },
+
+      _btnOption3NoClicked: function(e) {
+        this.set('option.option_3_yes', ""),
+        this.set('option.option_3_no', "active")
+      },
+
+      initializeStorage: function() {
+        this.option = {
+          option_1_yes: "active",
+          option_2_yes: "active",
+          option_3_yes: "active",
+          option_1_no: "",
+          option_2_no: "",
+          option_3_no: ""
+        }
+      }
     });
 
   </script>
 
 </dom-module>
+
+
+
+
