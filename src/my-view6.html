@@ -35,8 +35,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         bottom: 0px;
         width: 100%;
       }
-      footer p {
+      p {
         margin: 0px;
+        padding: 0px;
       }
 
       /* For background */
@@ -186,11 +187,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         transform: translate3d(0, 0, 0);
       }
 
-      /* Top bar */
+      /* Top bar right */
       #div-age-bar-wrapper {
         top: 65px;
         left: 505px;
-        width: 52px;
+        width: 552px;
         height: 115px;
         overflow: hidden;
         position: absolute;
@@ -198,11 +199,69 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       #div-age-bar-background {
         width: 485px;
         height: 125px;
-        background: url('http://localhost:8081/images/view-6-age-bar.png');
+        background: url('../images/view-6-age-bar.png');
         position: relative;
         background-size: contain;
         background-repeat: no-repeat;
         margin-top: 10px;
+      }
+      #div-age-bar-empty {
+        top: 63px;
+        left: 504px;
+        width: 553px;
+        height: 125px;
+        position: absolute;
+        background: url('../images/view-6-age-bar-empty.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
+
+      /* Messages on the left */
+      #div-message {
+        position: relative;
+        font-weight: 500;
+        font-size: 2.2rem;
+        margin-left: 35px;
+        margin-top: 25px;
+      }
+      .p-sum-assured {
+        font-size: 1.9rem;
+        margin-top: -10px;
+      }
+      #span-year-old {
+        color: var(--app-p1-color);
+      }
+      #span-money {
+        color: var(--app-p1-color);
+      }
+      #p-power-set-month {
+        color: var(--app-p1-color);
+      }
+      #span-first-year-old {
+        left: 517px;
+      }
+      #span-second-year-old {
+        left: 666px;
+      }
+      #span-3rd-year-old {
+        left: 741px;
+      }
+      #span-4th-year-old {
+        left: 949px;
+      }
+      .span-number {
+        color: var(--app-bright-color);
+        position: absolute;
+        font-weight: 400;
+        font-size: 2.2rem;
+        top: 100px;
+        cursor: pointer;
+      }
+      .p-claimed-for-major {
+        margin-top: 50px;
+      }
+      .p-stage-critical-illness{
+        margin-top: -6px;
       }
     </style>
 
@@ -216,9 +275,27 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <div id="walker-background-3"></div>
       <div id="walker-background-4"></div>
     </div>
+    <div id="div-message">
+      <p class="p-year-old-message">
+        <span id="span-year-old">35</span> YEARS OLD, <br/>
+      </p>
+      <p class="p-sum-assured">
+        SUM ASSURED <span id="span-money">S$150,000</span>
+      </p>
+      <p class="p-power-reset-message">
+        POWER RESET IN <span id="p-power-set-month">10 MONTHS</span>
+      </p>
+      <p class="p-claimed-for-major">CLAIMED FOR MAJOR</p>
+      <p class="p-stage-critical-illness" id="span-received-monmey">STAGE CRITICAL ILLNESS</p>
+    </div>
+    <div id="div-age-bar-empty"></div>
     <div id="div-age-bar-wrapper">
       <div id="div-age-bar-background"></div>
     </div>
+    <span class="span-number" id="span-first-year-old">35</span>
+    <span class="span-number" id="span-second-year-old">40</span>
+    <span class="span-number" id="span-3rd-year-old">41</span>
+    <span class="span-number" id="span-4th-year-old">75</span>
 
     <!-- Footer  -->
     <footer>
@@ -236,29 +313,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       is: 'my-view6'
 
     });
-
-
-    // window.addEvent("domready",function() {
-
-    //   var duration = 40000;
-    //   var length = 2000;
-    //   var count = 0;
-
-    //   var tweener;
-
-    //   var run = function() {
-    //     tweener.tween("background-position", "-" + (++count * length) + "px 0px");
-    //   };
-
-    //   tweener = $("animate-area").setStyle("background-position", "0px 0px").set("tween", {
-    //     duration: duration,
-    //     transition: Fx.Transitions.linear,
-    //     onComplete: run,
-    //     link: "cancel"
-    //   });
-
-    //   run();
-    // });
 
   </script>
 
