@@ -72,34 +72,34 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       /* For Walker */
       @keyframes animatedWalkerUnhappyOne {
         0% { opacity: 1; }
-        24% { opacity: 1; }
-        25% { opacity: 0; }
+        25% { opacity: 1; }
+        26% { opacity: 0; }
         100% { opacity: 0; }
       }
       @keyframes animatedWalkerUnhappyTwo {
         0% { opacity: 0; }
         24% { opacity: 0; }
         25% { opacity: 1; }
-        49% { opacity: 1; }
-        50% { opacity: 0; }
+        50% { opacity: 1; }
+        51% { opacity: 0; }
         100% { opacity: 0; }
       }
       @keyframes animatedWalkerUnhappyThree {
         0% { opacity: 0; }
         49% { opacity: 0; }
         50% { opacity: 1; }
-        74% { opacity: 1; }
-        75% { opacity: 0; }
+        75% { opacity: 1; }
+        76% { opacity: 0; }
         100% { opacity: 0; }
       }
       @keyframes animatedWalkerUnhappyFour {
         0% { opacity: 0; }
         74% { opacity: 0; }
         75% { opacity: 1; }
-        99% { opacity: 1; }
-        100% { opacity: 0; }
+        100% { opacity: 1; }
+
       }
-      @-webkit-keyframes animatedWalkerUnhappyOne {
+      /*@-webkit-keyframes animatedWalkerUnhappyOne {
         0% { opacity: 1; }
         24% { opacity: 1; }
         25% { opacity: 0; }
@@ -127,8 +127,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         75% { opacity: 1; }
         99% { opacity: 1; }
         100% { opacity: 0; }
-      }
-      #walker-wrapper {
+      }*/
+      .walker-wrapper {
 
       }
       #walker-background-1, #walker-background-2, #walker-background-3, #walker-background-4 {
@@ -182,9 +182,78 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         -moz-animation: animatedWalkerUnhappyFour 0.8s linear infinite;
         -o-animation: animatedWalkerUnhappyFour 0.8s linear infinite;
         animation: animatedWalkerUnhappyFour 0.8s linear infinite;
-
         -webkit-transform: translate3d(0, 0, 0);
         transform: translate3d(0, 0, 0);
+      }
+
+
+      /* rain cloud */
+      #rain-cloud-background-1 {
+        opacity: 1;
+        display: none;
+        background: url(../images/rain_cloud_1.png) repeat 0 0;
+        background-size: contain;
+      }
+      #rain-cloud-background-2 {
+        opacity: 0;
+        display: none;
+        background: url(../images/rain_cloud_2.png) repeat 0 0;
+        background-size: contain;
+      }
+      #rain-cloud-background-3 {
+        opacity: 0;
+        display: none;
+        background: url(../images/rain_cloud_3.png) repeat 0 0;
+        background-size: contain;
+      }
+      #rain-cloud-background-4 {
+        opacity: 0;
+        display: none;
+        background: url(../images/rain_cloud_4.png) repeat 0 0;
+        background-size: contain;
+      }
+      .rain-cloud-wrapper.active #rain-cloud-background-1 {
+        display: block;
+        -webkit-animation: animatedWalkerUnhappyOne 0.4s linear infinite;
+        -moz-animation: animatedWalkerUnhappyOne 0.4s linear infinite;
+        -o-animation: animatedWalkerUnhappyOne 0.4s linear infinite;
+        animation: animatedWalkerUnhappyOne 0.4s linear infinite;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+      }
+      .rain-cloud-wrapper.active #rain-cloud-background-2 {
+        display: block;
+        -webkit-animation: animatedWalkerUnhappyTwo 0.4s linear infinite;
+        -moz-animation: animatedWalkerUnhappyTwo 0.4s linear infinite;
+        -o-animation: animatedWalkerUnhappyTwo 0.4s linear infinite;
+        animation: animatedWalkerUnhappyTwo 0.4s linear infinite;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+      }
+      .rain-cloud-wrapper.active #rain-cloud-background-3 {
+        display: block;
+        -webkit-animation: animatedWalkerUnhappyThree 0.4s linear infinite;
+        -moz-animation: animatedWalkerUnhappyThree 0.4s linear infinite;
+        -o-animation: animatedWalkerUnhappyThree 0.4s linear infinite;
+        animation: animatedWalkerUnhappyThree 0.4s linear infinite;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+      }
+      .rain-cloud-wrapper.active #rain-cloud-background-4 {
+        display: block;
+        -webkit-animation: animatedWalkerUnhappyFour 0.4s linear infinite;
+        -moz-animation: animatedWalkerUnhappyFour 0.4s linear infinite;
+        -o-animation: animatedWalkerUnhappyFour 0.4s linear infinite;
+        animation: animatedWalkerUnhappyFour 0.4s linear infinite;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+      }
+      #rain-cloud-background-1, #rain-cloud-background-2, #rain-cloud-background-3, #rain-cloud-background-4 {
+        left: 50px;
+        width: 230px;
+        height: 230px;
+        bottom: 58px;
+        position: absolute;
       }
 
       /* Top bar right */
@@ -269,11 +338,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <div id="parallax-wrapper">
       <div id="parallax-background"></div>
     </div>
-    <div id="walker-wrapper">
+    <div class="walker-wrapper active">
       <div id="walker-background-1"></div>
       <div id="walker-background-2"></div>
       <div id="walker-background-3"></div>
       <div id="walker-background-4"></div>
+    </div>
+    <div class="rain-cloud-wrapper active">
+      <div id="rain-cloud-background-1"></div>
+      <div id="rain-cloud-background-2"></div>
+      <div id="rain-cloud-background-3"></div>
+      <div id="rain-cloud-background-4"></div>
     </div>
     <div id="div-message">
       <p class="p-year-old-message">
